@@ -30,9 +30,12 @@ function filterFeaturedPosts(posts = []) {
 	return posts.filter(p => Boolean(p.isFeatured));
 }
 
-export function getAllPosts() {
+export function getPostFiles() {
+	return fs.readdirSync(postPath);
+}
 
-	const files = fs.readdirSync(postPath);
+export function getAllPosts() {
+	const files = getPostFiles();
 	return sortPostsByDate(files.map(fileNameToPost));
 }
 

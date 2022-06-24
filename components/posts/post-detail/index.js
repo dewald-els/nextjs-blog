@@ -12,7 +12,7 @@ export default function PostDetail(props) {
 	return (
 		<article>
 			<PostDetailHeader title={title} image={image} slug={slug} />
-			<PostDetailContent content={content} />
+			<PostDetailContent content={content} slug={slug} />
 		</article>
 	);
 }

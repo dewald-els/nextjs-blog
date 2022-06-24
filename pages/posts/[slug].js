@@ -22,13 +22,11 @@ export async function getStaticPaths() {
 
 	const featuredPosts = getFeaturedPosts();
 
-	const paths = featuredPosts.map((post) => {
-		return {
-			params: {
-				slug: post.slug,
-			},
-		};
-	});
+	const paths = featuredPosts.map((post) => ({
+		params: {
+			slug: post.slug,
+		},
+	}));
 
 	return {
 		fallback: true,
