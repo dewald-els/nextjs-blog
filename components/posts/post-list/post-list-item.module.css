@@ -1,0 +1,19 @@
+.PostListItem {
+
+}
+
+.PostListItem__Image {
+
+}
+
+.PostListItem__Content {
+
+}
+
+.PostListItem__Content h3 {
+    margin-bottom: 0;
+}
+
+.PostListItem__Content time {
+    color: #9b9b9b;
+}

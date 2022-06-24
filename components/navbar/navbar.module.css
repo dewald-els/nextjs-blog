@@ -1,0 +1,30 @@
+.Navbar {
+    background: #051937;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 99;
+}
+
+.Navbar_Menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.Navbar_Menu__Item {
+}
+
+.Navbar_Menu__Item a {
+    display: block;
+    padding: 1rem;
+}
+.Navbar_Menu__Item a:hover {
+    background: #212836;
+}

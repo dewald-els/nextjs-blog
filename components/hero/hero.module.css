@@ -1,0 +1,30 @@
+.Hero {
+    display: block;
+    text-align: center;
+    background-image: linear-gradient(to bottom, #051937, #123460, #1b538c, #1e74ba, #1297eb);
+    padding: 4rem 0;
+}
+
+.Hero_Header {
+
+}
+
+.Hero_Header__Image {
+    display: block;
+    border: 3px solid white !important;
+    border-radius: 50%;
+    box-shadow: 0 0 7px rgba(0, 0, 0, 0.25);
+}
+.Hero_Content {
+    color: white;
+}
+
+.Hero_Content__Title {
+    font-size: 3rem;
+    margin-bottom: 0;
+}
+
+.Hero_Content__Tag {
+    margin-top: .25rem;
+    margin-bottom: 0;
+}
