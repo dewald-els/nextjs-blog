@@ -1,10 +1,16 @@
 import css from "./contact-form.module.css";
 import { useRef, useState } from "react";
 import { createMessage } from "./contact-api";
+import Notification from "../../notification/notification";
 
 export default function ContactForm() {
 
 	const [contactResult, setContactResult] = useState();
+	const [contactState, setContactState] = useState({
+		title: "",
+		status: "",
+		message: "",
+	});
 	const formRef = useRef();
 	const emailRef = useRef();
 	const nameRef = useRef();
@@ -13,16 +19,31 @@ export default function ContactForm() {
 	const onSubmit = async (event) => {
 		event.preventDefault();
 
+		setContactState({
+			title: "Sending!",
+			message: "Message is sending...",
+			status: "",
+		});
+
 		const name = nameRef.current.value;
 		const email = emailRef.current.value;
 		const message = messageRef.current.value;
 
-		const { error, data } = await createMessage(name, email, message);
+
+		const { error } = await createMessage(name, email, message);
 		if (error !== null) {
-			setContactResult(error);
+			setContactState({
+				title: "Error!",
+				status: "error",
+				message: error,
+			});
 		} else {
 			formRef.current.reset();
-			setContactResult(data);
+			setContactState({
+				title: "Success!",
+				status: "success",
+				message: "Successfully sent message!",
+			});
 		}
 	};
 
@@ -50,7 +71,9 @@ export default function ContactForm() {
 				<div>
 					<button type="submit">Contact me</button>
 				</div>
-				{contactResult && <div>{contactResult}</div>}
+				{contactState.title &&
+					<Notification title={contactState.title} message={contactState.message} status={contactState.status} />
+				}
 			</form>
 		</section>
 	);

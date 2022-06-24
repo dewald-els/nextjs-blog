@@ -1,0 +1,36 @@
+.Notification {
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.Notification h4 {
+    margin: 0;
+}
+
+.Notification p {
+    margin: 0;
+}
+
+.Notification_Bar {
+    display: block;
+    width: 320px;
+    margin: 0 auto;
+    background: #061826;
+    padding: .5rem .75rem;
+    border-radius: .15rem;
+    border: 1px solid #030a11;
+}
+
+.Notification_Bar__Success {
+    background: #74ba1e;
+    border: 1px solid #5e9619;
+}
+
+
+.Notification_Bar__Error {
+    background: #ba1e35;
+    border: 1px solid #9d192c;
+}
+
