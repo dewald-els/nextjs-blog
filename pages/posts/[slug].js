@@ -1,6 +1,7 @@
 import Container from "../../components/container/container";
 import PostDetail from "../../components/posts/post-detail";
 import { getFeaturedPosts, getPostContent } from "../../utils/post-utils";
+import Head from "next/head";
 
 export default function PostDetailPage(props) {
 	const { post } = props;
@@ -11,6 +12,10 @@ export default function PostDetailPage(props) {
 
 	return (
 		<>
+			<Head>
+				<meta name="description" content={post.excerpt} />
+				<title>Next Blog - { post.title }</title>
+			</Head>
 			<Container>
 				<PostDetail post={post} />
 			</Container>

@@ -1,48 +1,36 @@
 import css from "./contact-form.module.css";
 import { useRef, useState } from "react";
+import { createMessage } from "./contact-api";
 
 export default function ContactForm() {
 
 	const [contactResult, setContactResult] = useState();
+	const formRef = useRef();
 	const emailRef = useRef();
 	const nameRef = useRef();
 	const messageRef = useRef();
 
-	const onSubmit = (event) => {
+	const onSubmit = async (event) => {
 		event.preventDefault();
-
 
 		const name = nameRef.current.value;
 		const email = emailRef.current.value;
 		const message = messageRef.current.value;
 
-		fetch("/api/contact", {
-			method: "POST",
-			headers: {
-				"content-type": "application/json",
-			},
-			body: JSON.stringify({ name, email, message }),
-		}).then(async (response) => {
-			if (response.status > 299) {
-				const json = await response.json();
-				const { message } = json;
-				throw new Error(message);
-			}
-			return response.json();
-		})
-			.then(response => {
-				setContactResult(response.message);
-			})
-			.catch(error => {
-				setContactResult(error.message);
-			});
+		const { error, data } = await createMessage(name, email, message);
+		if (error !== null) {
+			setContactResult(error);
+		} else {
+			formRef.current.reset();
+			setContactResult(data);
+		}
 	};
 
 	return (
 		<section>
 			<h2>Complete the form</h2>
 			<p>Tell me how I can help you by completing the following form.</p>
-			<form onSubmit={onSubmit}>
+			<form onSubmit={onSubmit} ref={formRef}>
 				<fieldset aria-label="Contact information">
 					<div className="form-group">
 						<label htmlFor="email">Email</label>
