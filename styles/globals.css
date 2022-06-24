@@ -16,9 +16,10 @@ a {
 }
 
 
-form, input, label, button {
+form, input, label, button, textarea {
     display: block;
     font-size: 1rem;
+    font-family: inherit;
 }
 
 fieldset {
