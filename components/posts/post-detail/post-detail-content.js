@@ -1,14 +1,19 @@
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { atomDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import { PrismLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import atomDark from "react-syntax-highlighter/dist/cjs/styles/prism/atom-dark";
+import jsHighlight from "react-syntax-highlighter/dist/cjs/languages/prism/javascript"
+import cssHighlight from "react-syntax-highlighter/dist/cjs/languages/prism/css"
+
+SyntaxHighlighter("js", jsHighlight);
+SyntaxHighlighter("jsx", jsHighlight);
+SyntaxHighlighter("css", cssHighlight);
 
 export default function PostDetailContent(props) {
 	const { content, slug } = props;
 
 	const customComponents = {
 		code(code) {
-			console.log(code);
 			const { className, children } = code;
 			return (
 				<SyntaxHighlighter showLineNumbers language={className.replace(/language-/, "")} children={children} style={atomDark} />
